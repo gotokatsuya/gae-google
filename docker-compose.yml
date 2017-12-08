@@ -1,0 +1,16 @@
+version: '2'
+services:
+  app:
+    image: mercari/appengine-go:1.8
+    working_dir: /go/src/github.com/gotokatsuya/gae-google
+    command: make serve-dev
+    ports:
+      - 8080:8080
+      - 8000:8000
+    volumes:
+      - .:/go/src/github.com/gotokatsuya/gae-google
+  dep:
+    image: instrumentisto/dep:0.3.2
+    working_dir: /go/src/github.com/gotokatsuya/gae-google
+    volumes:
+      - .:/go/src/github.com/gotokatsuya/gae-google
